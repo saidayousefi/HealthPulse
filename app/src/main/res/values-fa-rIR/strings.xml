@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">اطلاعات سلامت </string>
+    <string name="add_record">افزودن داده</string>
+    <string name="value"> مقدار </string>
+    <string name="save"> ذخیره </string>
+    <string name="channel_name">اعلان های اطلاعات سلامت </string>
+    <string name="channel_description"> اعلان ها برای ضبط اطلاعات سلامت </string>
+    <string name="enter_data"> وارد کردن داده </string>
+    <string name="icon"> آیکون </string> <!-- Add this line -->
+    <string name="data_type"> نوع داده </string> <!-- Add this line -->
+    <string name="data_value"> مفدار داده </string> <!-- Add this line -->
+    <string name="datetime">روز و زمان</string>
+    <string name="delete"> حذف </string>
+    <string name="edit"> ویرایش </string>
+    <string name="edit_health_record"> ویرایش داده سلامت </string>
+    <string name="time"> زمان </string>
+    <string name="systolic"> سیستول </string>
+    <string name="diastolic"> دیاستول </string>
+    <string name="blood_sugar"> قند خون </string>
+    <string name="remind_me">یادآوری کن</string>
+    <string name="notification_settings"> تنظیمات اعلان ها</string>
+    <string name="enable_notifications">فعالسازی اعلان ها</string>
+    <string name="profile_management">تنظیمات پروفایل</string>
+    <string name="create_new_profile">ساخت پروفایل جدید</string>
+    <string name="first_name">نام</string>
+    <string name="last_name">نام خانوادگی</string>
+    <string name="email">ایمیل</string>
+    <string name="password">رمزعبور</string>
+    <string name="male">مرد</string>
+    <string name="accept_terms">با شرایط و ضوابط موافقم</string>
+    <string name="female">زن</string>
+    <string name="add_health_record">وارد کردن داده سلامت جدید</string>
+    <string name="view_health_records">مشاهده داده های سلامت</string>
+    <string name="health_records">داده های سلامت</string>
+    <string name="user_sign_up">ثبت نام کاربر</string>
+    <string name="view_profile">مشاهده پروفایل</string>
+    <string name="add_new_user">افزودن کاربر جدید</string>
+    <string name="profile_name">نام کاربری</string>
+    <string name="login">ورود</string>
+    <string name="sign_up">ثبت نام</string>
+    <string name="logout">خروج</string>
+    <string name="navigation_drawer_open">باز کردن </string>
+    <string name="navigation_drawer_close">بستن</string>
+
+
+
+</resources>

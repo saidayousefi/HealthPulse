@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryVariant">#3700B3</color>
+    <color name="colorSecondary">#03DAC6</color>
+    <color name="colorSecondaryVariant">#018786</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorError">#B00020</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnSurface">#000000</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="textColorPrimary">#000000</color>
+
+
+    <!-- Custom colors for the chart -->
+    <color name="systolic_color">#C8FF5722</color> <!-- Red color for systolic -->
+    <color name="diastolic_color">#D53F51B5</color> <!-- Blue color for diastolic -->
+    <color name="blood_sugar_color">#C34CAF50</color> <!-- Green color for blood sugar -->
+</resources>
