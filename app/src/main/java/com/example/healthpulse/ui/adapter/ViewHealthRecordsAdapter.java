@@ -71,9 +71,9 @@ public class ViewHealthRecordsAdapter extends ListAdapter<RecordData, ViewHealth
         public void bind(final RecordData recordData, final OnItemClickListener listener) {
             textViewDate.setText(recordData.getDate());
             textViewTime.setText(recordData.getTime());
-            textViewSystolic.setText("Systolic: " + recordData.getSystolic());
-            textViewDiastolic.setText("Diastolic: " + recordData.getDiastolic());
-            textViewBloodSugar.setText(+ recordData.getBloodSugar());
+            textViewSystolic.setText(String.valueOf(recordData.getSystolic()));
+            textViewDiastolic.setText(String.valueOf(recordData.getDiastolic()));
+            textViewBloodSugar.setText(String.valueOf(recordData.getBloodSugar()));
 
             buttonEdit.setOnClickListener(v -> listener.onItemClick(recordData));
         }

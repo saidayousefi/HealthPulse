@@ -36,6 +36,7 @@ public class NotificationSettingsFragment extends Fragment {
         binding = FragmentNotificationSettingsBinding.inflate(inflater, container, false);
         notificationViewModel = new ViewModelProvider(this).get(NotificationViewModel.class);
         binding.setLifecycleOwner(getViewLifecycleOwner());
+        binding.setViewModel(notificationViewModel);
         return binding.getRoot();
     }
 
@@ -47,8 +48,9 @@ public class NotificationSettingsFragment extends Fragment {
             Navigation.findNavController(v).navigate(R.id.action_notificationSettingsFragment_to_viewNotificationsFragment);
         });
 
-
         binding.editTextTime.setOnClickListener(v -> showTimePickerDialog());
+
+        binding.buttonSave.setOnClickListener(v -> saveNotification());
     }
 
     private void showTimePickerDialog() {
@@ -86,15 +88,6 @@ public class NotificationSettingsFragment extends Fragment {
         }
     }
 
-    private void cancelNotification() {
-        AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(requireContext(), NotificationReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(requireContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-
-        if (alarmManager != null) {
-            alarmManager.cancel(pendingIntent);
-        }
-    }
 
     private void saveNotification() {
         String notificationMessage = binding.editTextNotificationMessage.getText().toString();
@@ -118,6 +111,7 @@ public class NotificationSettingsFragment extends Fragment {
         notificationViewModel.insert(notification);
 
         Toast.makeText(getContext(), "Notification saved successfully!", Toast.LENGTH_SHORT).show();
+        scheduleNotification(hour, minute);
     }
 
     @Override
