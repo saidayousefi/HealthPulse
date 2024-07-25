@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,53 +12,123 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <TextView
+            android:id="@+id/textViewDateTimeHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:fontFamily="monospace"
+            android:text="Date and Time"
+            android:textColor="#3F51B5"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/cal26"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="monospace"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewTime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewDateTimeHeader" />
+
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
+            app:layout_constraintStart_toEndOf="@id/textViewDate"
+            app:layout_constraintTop_toTopOf="@id/textViewDate" />
+
+        <TextView
+            android:id="@+id/textViewBloodPressureHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="monospace"
+            android:text="Blood Pressure"
+            android:textColor="#3F51B5"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/bp32"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewDate" />
 
         <TextView
             android:id="@+id/textViewSystolic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Systolic"
+            android:text="Systolic:"
+            android:fontFamily="monospace"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
+            android:layout_marginTop="14dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/textViewBloodPressureHeader" />
 
         <TextView
             android:id="@+id/textViewDiastolic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Diastolic"
+            android:text="Diastolic:"
+            android:fontFamily="monospace"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
+            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewSystolic" />
+
+        <TextView
+            android:id="@+id/textViewBloodSugarHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="monospace"
+            android:text="Blood Sugar"
+            android:textColor="#3F51B5"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/bs32"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewDiastolic" />
 
         <TextView
             android:id="@+id/textViewBloodSugar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Blood Sugar"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
+            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toStartOf="@+id/buttonEdit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewDiastolic" />
+            app:layout_constraintTop_toBottomOf="@id/textViewBloodSugarHeader" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonEdit"
             android:layout_width="80dp"
             android:layout_height="40dp"
+            android:gravity="center"
+            android:padding="10dp"
             android:text="Edit"
+            android:fontFamily="monospace"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/buttonDelete"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:text="Delete"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/buttonEdit" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

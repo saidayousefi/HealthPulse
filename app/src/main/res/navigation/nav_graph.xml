@@ -6,8 +6,8 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.healthtracker.features.profile_management.SplashFragment"
-        android:label="Splash Screen"
+        android:name="com.example.healthpulse.features.profile_management.SplashFragment"
+        android:label="..."
         tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_mainMenuFragment"
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.healthtracker.features.profile_management.LoginFragment"
+        android:name="com.example.healthpulse.features.profile_management.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/userSignUpFragment"
-        android:name="com.example.healthtracker.features.profile_management.UserSignUpFragment"
+        android:name="com.example.healthpulse.features.profile_management.UserSignUpFragment"
         android:label="User Sign Up"
         tools:layout="@layout/fragment_user_sign_up">
         <action
@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/mainMenuFragment"
-        android:name="com.example.healthtracker.MainMenuFragment"
+        android:name="com.example.healthpulse.MainMenuFragment"
         android:label="Main Menu"
         tools:layout="@layout/fragment_main_menu">
         <action
@@ -57,11 +57,18 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_notificationSettingsFragment"
             app:destination="@id/notificationSettingsFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_EducationalContentFragment"
+            app:destination="@id/EducationalContentFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_ChartFragment"
+            app:destination="@id/chartFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/viewHealthRecordsFragment"
-        android:name="com.example.healthtracker.features.view_health_records.ViewHealthRecordsFragment"
+        android:name="com.example.healthpulse.features.view_health_records.ViewHealthRecordsFragment"
         android:label="View Health Records"
         tools:layout="@layout/fragment_view_health_records">
         <action
@@ -71,13 +78,13 @@
 
     <fragment
         android:id="@+id/addHealthRecordFragment"
-        android:name="com.example.healthtracker.features.add_health_record.AddHealthRecordFragment"
+        android:name="com.example.healthpulse.features.add_health_record.AddHealthRecordFragment"
         android:label="Add Health Record"
         tools:layout="@layout/fragment_add_health_record" />
 
     <fragment
         android:id="@+id/editHealthRecordsFragment"
-        android:name="com.example.healthtracker.features.view_health_records.EditHealthRecordsFragment"
+        android:name="com.example.healthpulse.features.view_health_records.EditHealthRecordsFragment"
         android:label="Edit Health Records"
         tools:layout="@layout/fragment_edit_health_records">
         <action
@@ -87,7 +94,7 @@
 
     <fragment
         android:id="@+id/viewProfileFragment"
-        android:name="com.example.healthtracker.features.profile_management.ViewProfileFragment"
+        android:name="com.example.healthpulse.features.profile_management.ViewProfileFragment"
         android:label="View Profile"
         tools:layout="@layout/fragment_view_profile">
         <action
@@ -100,13 +107,13 @@
 
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.healthtracker.features.profile_management.EditProfileFragment"
+        android:name="com.example.healthpulse.features.profile_management.EditProfileFragment"
         android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
 
     <fragment
         android:id="@+id/notificationSettingsFragment"
-        android:name="com.example.healthtracker.features.notification_setting.NotificationSettingsFragment"
+        android:name="com.example.healthpulse.features.notification_setting.NotificationSettingsFragment"
         android:label="Notification Settings"
         tools:layout="@layout/fragment_notification_settings">
         <action
@@ -116,12 +123,26 @@
 
     <fragment
         android:id="@+id/viewNotificationsFragment"
-        android:name="com.example.healthtracker.features.notification_setting.ViewNotificationsFragment"
+        android:name="com.example.healthpulse.features.notification_setting.ViewNotificationsFragment"
         android:label="View Notifications"
         tools:layout="@layout/fragment_view_notifications">
         <action
             android:id="@+id/action_viewNotificationsFragment_to_notificationSettingsFragment"
             app:destination="@id/notificationSettingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chartFragment"
+        android:name="com.example.healthpulse.features.ChartFragment"
+        android:label="Chart"
+        tools:layout="@layout/fragment_chart">
+    </fragment>
+
+    <fragment
+        android:id="@+id/EducationalContentFragment"
+        android:name="com.example.healthpulse.features.EducationalContentFragment"
+        android:label="Educational Content"
+        tools:layout="@layout/fragment_educational_content">
     </fragment>
 
 </navigation>

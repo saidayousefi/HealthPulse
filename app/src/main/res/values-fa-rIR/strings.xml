@@ -42,6 +42,9 @@
     <string name="logout">خروج</string>
     <string name="navigation_drawer_open">باز کردن </string>
     <string name="navigation_drawer_close">بستن</string>
+    <string name="date_of_birth">تاریخ تولد</string>
+    <string name="medical_history">سابقه بیماری</string>
+    <string name="gender">جنسیت</string>
 
 
 

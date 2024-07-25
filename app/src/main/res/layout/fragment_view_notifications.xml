@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.healthtracker.ui.viewmodel.NotificationViewModel" />
+            type="com.example.healthpulse.ui.viewmodel.NotificationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

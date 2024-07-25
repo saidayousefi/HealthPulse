@@ -2,85 +2,177 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".features.add_edit_record.AddRecordFragment">
+    tools:context=".features.add_health_record.AddHealthRecordFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.healthpulse.ui.viewmodel.HealthRecordsViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
 
+        <TextView
+            android:id="@+id/textViewBloodPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Pressure"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:drawableStartCompat="@drawable/bp4"
+            android:drawablePadding="8dp"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutSystolic"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayoutDiastolic"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp">
+            app:layout_constraintTop_toBottomOf="@id/textViewBloodPressure">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextSystolic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Systolic BP"
+                android:hint="Systolic"
+                android:fontFamily="monospace"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutDiastolic"
             android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayoutSystolic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textInputLayoutSystolic"
+            app:layout_constraintTop_toTopOf="@id/textInputLayoutSystolic">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextDiastolic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Diastolic BP"
+                android:hint="Diastolic"
+                android:fontFamily="monospace"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textViewBloodSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Sugar"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutSystolic"
+            app:drawableStartCompat="@drawable/bs2"
+            android:drawablePadding="8dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutBloodSugar"
             android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayoutDiastolic"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/textViewBloodSugar">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextBloodSugar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/blood_sugar"
+                android:hint="Blood Sugar"
+                android:fontFamily="monospace"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <CheckBox
-            android:id="@+id/checkBoxRemindMe"
+        <TextView
+            android:id="@+id/textViewDateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text=" Date and Time"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:text="@string/remind_me"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutBloodSugar"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:drawableStartCompat="@drawable/cal2"
+            android:drawablePadding="8dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutDate"
+            android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayoutTime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewDateTime">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date"
+                android:fontFamily="monospace"
+                android:inputType="date"
+                android:focusable="false" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutTime"
+            android:layout_width="0dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textInputLayoutDate"
+            app:layout_constraintTop_toTopOf="@id/textInputLayoutDate">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Time"
+                android:fontFamily="monospace"
+                android:inputType="time"
+                android:focusable="false" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="32dp"
             android:backgroundTint="@color/colorPrimary"
             android:text="@string/save"
             android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:gravity="center"
             app:cornerRadius="12dp"
-            app:layout_constraintTop_toBottomOf="@id/checkBoxRemindMe"
+            android:fontFamily="monospace"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTime" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

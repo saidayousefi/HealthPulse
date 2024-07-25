@@ -4,23 +4,39 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="Home"
+        android:fontFamily="monospace"/>
     <item
         android:id="@+id/nav_profile"
         android:title="Profile"
-        android:icon="@drawable/ic_profile" />
+        android:icon="@drawable/ic_profile"
+        android:fontFamily="monospace"/>
     <item
         android:id="@+id/nav_health_records"
-        android:title="Health Records"
-        android:icon="@drawable/ic_health_records" />
+        android:title="View Health Records"
+        android:icon="@drawable/drawerlist"
+        android:fontFamily="monospace"/>
     <item
         android:id="@+id/nav_add_health_record"
         android:title="Add Health Record"
-        android:icon="@drawable/ic_add" />
+        android:icon="@drawable/addd"
+        android:fontFamily="monospace"/>
     <item
         android:id="@+id/nav_notifications"
         android:title="Notification Settings"
-        android:icon="@drawable/ic_notification" />
+        android:icon="@drawable/notif"
+        android:fontFamily="monospace"/>
+    <item
+        android:id="@+id/nav_chart"
+        android:icon="@drawable/chart"
+        android:title="Charts"
+        android:fontFamily="monospace" />
+    <item
+        android:id="@+id/nav_educational_content"
+        android:icon="@drawable/content"
+        android:title="Educational Content"
+        android:fontFamily="monospace" />
+
 </menu>
 
 

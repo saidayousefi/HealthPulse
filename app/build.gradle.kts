@@ -7,11 +7,11 @@ plugins {
 
 
 android {
-    namespace = "com.example.healthtracker"
+    namespace = "com.example.healthpulse"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.healthtracker"
+        applicationId = "com.example.healthpulse"
         minSdk = 21
         targetSdk = 34
         versionCode = 1

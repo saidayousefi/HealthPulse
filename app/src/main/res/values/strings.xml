@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HealthTracker</string>
+    <string name="app_name">HealthPulse</string>
     <string name="add_record">Add Record</string>
     <string name="value">Value</string>
     <string name="save">Save</string>
@@ -42,6 +42,29 @@
     <string name="logout">Logout</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="medical_history">Medical History</string>
+    <string name="gender">Gender</string>
+    <string name="full_name">%1$s %2$s</string>
+    <string name="gender_label">Gender: %1$s</string>
+    <string name="dob_label">Date of Birth: %1$s</string>
+    <string name="logged_out">Logged out</string>
+    <string name="year">Year</string>
+    <string name="month">Month</string>
+    <string name="day">Day</string>
+
+    <string name="gender_content_description">Select your gender</string>
+    <string name="year_content_description">Select your birth year</string>
+    <string name="month_content_description">Select your birth month</string>
+    <string name="day_content_description">Select your birth day</string>
+
+
+    <string-array name="gender_array">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
 
 
 

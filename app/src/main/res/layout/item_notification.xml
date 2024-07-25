@@ -6,7 +6,7 @@
     <data>
         <variable
             name="notification"
-            type="com.example.healthtracker.data.local.model.NotificationData" />
+            type="com.example.healthpulse.data.local.model.NotificationData" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -48,8 +48,14 @@
 
             <Button
                 android:id="@+id/buttonDeleteNotification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
+                android:textSize="16sp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/colorError"
                 android:text="@string/delete"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
