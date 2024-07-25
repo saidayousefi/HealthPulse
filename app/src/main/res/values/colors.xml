@@ -16,8 +16,9 @@
     <color name="colorOnError">#FFFFFF</color>
     <color name="textColorPrimary">#000000</color>
     <color name="OceanBlue">#A4009688</color>
-    <color name="grey">#56673AB7</color>
-
+    <color name="grey">#452196F3</color>
+    <color name="primary_text">#DE000000</color> <!-- 87% black -->
+    <color name="high_contrast_text">#FFFFFF</color>
 
     <!-- Custom colors for the chart -->
     <color name="systolic_color">#C8FF5722</color> <!-- Red color for systolic -->

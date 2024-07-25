@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,13 +33,11 @@ public class EditProfileFragment extends Fragment {
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         binding.setLifecycleOwner(getViewLifecycleOwner());
 
-        // Setup gender spinner
-        ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.gender_array, android.R.layout.simple_spinner_item);
-        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.genderSpinner.setAdapter(genderAdapter);
+        // Setup gender dropdown
+        setupGenderDropdown();
 
-        // Setup date of birth spinners
-        setupDateOfBirthSpinners();
+        // Setup date of birth dropdowns
+        setupDateOfBirthDropdowns();
 
         // Retrieve the profile from the arguments
         if (getArguments() != null) {
@@ -52,68 +50,53 @@ public class EditProfileFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void setupDateOfBirthSpinners() {
-        // Year spinner
+    private void setupGenderDropdown() {
+        String[] genders = getResources().getStringArray(R.array.gender_array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, genders);
+        binding.genderAutoCompleteTextView.setAdapter(adapter);
+    }
+
+    private void setupDateOfBirthDropdowns() {
+        // Year dropdown
         List<String> years = new ArrayList<>();
         for (int year = 1950; year <= 2022; year++) {
             years.add(String.valueOf(year));
         }
-        ArrayAdapter<String> yearAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, years);
-        yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.yearSpinner.setAdapter(yearAdapter);
+        ArrayAdapter<String> yearAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, years);
+        binding.yearAutoCompleteTextView.setAdapter(yearAdapter);
 
-        // Month spinner
+        // Month dropdown
         List<String> months = new ArrayList<>();
         for (int month = 1; month <= 12; month++) {
             months.add(String.valueOf(month));
         }
-        ArrayAdapter<String> monthAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, months);
-        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.monthSpinner.setAdapter(monthAdapter);
+        ArrayAdapter<String> monthAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, months);
+        binding.monthAutoCompleteTextView.setAdapter(monthAdapter);
 
-        // Day spinner
+        // Day dropdown
         List<String> days = new ArrayList<>();
         for (int day = 1; day <= 31; day++) {
             days.add(String.valueOf(day));
         }
-        ArrayAdapter<String> dayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, days);
-        dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.daySpinner.setAdapter(dayAdapter);
+        ArrayAdapter<String> dayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, days);
+        binding.dayAutoCompleteTextView.setAdapter(dayAdapter);
     }
 
     private void populateProfileData(Profile profile) {
         binding.firstNameEditText.setText(profile.getFirstName());
         binding.lastNameEditText.setText(profile.getLastName());
         binding.emailEditText.setText(profile.getEmail());
+        binding.genderAutoCompleteTextView.setText(profile.getGender(), false);
 
-        // Set gender spinner selection
-        ArrayAdapter<CharSequence> adapter = (ArrayAdapter<CharSequence>) binding.genderSpinner.getAdapter();
-        if (adapter != null) {
-            int position = adapter.getPosition(profile.getGender());
-            if (position != -1) {
-                binding.genderSpinner.setSelection(position);
-            }
-        }
-
-        // Set date of birth spinners
+        // Set date of birth
         String[] dateParts = profile.getDateOfBirth().split("-");
         if (dateParts.length == 3) {
-            setSpinnerToValue(binding.yearSpinner, dateParts[0]);
-            setSpinnerToValue(binding.monthSpinner, dateParts[1]);
-            setSpinnerToValue(binding.daySpinner, dateParts[2]);
+            binding.yearAutoCompleteTextView.setText(dateParts[0], false);
+            binding.monthAutoCompleteTextView.setText(dateParts[1], false);
+            binding.dayAutoCompleteTextView.setText(dateParts[2], false);
         }
 
         binding.medicalHistoryEditText.setText(profile.getMedicalHistory());
-    }
-
-    private void setSpinnerToValue(Spinner spinner, String value) {
-        ArrayAdapter adapter = (ArrayAdapter) spinner.getAdapter();
-        if (adapter != null) {
-            int position = adapter.getPosition(value);
-            if (position != -1) {
-                spinner.setSelection(position);
-            }
-        }
     }
 
     @Override
@@ -148,14 +131,14 @@ public class EditProfileFragment extends Fragment {
             valid = false;
         }
 
-        if (binding.genderSpinner.getSelectedItemPosition() == 0) {
-            Toast.makeText(getContext(), "Please select a gender", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(binding.genderAutoCompleteTextView.getText())) {
+            binding.genderAutoCompleteTextView.setError("Please select a gender");
             valid = false;
         }
 
-        if (binding.yearSpinner.getSelectedItemPosition() == 0 ||
-                binding.monthSpinner.getSelectedItemPosition() == 0 ||
-                binding.daySpinner.getSelectedItemPosition() == 0) {
+        if (TextUtils.isEmpty(binding.yearAutoCompleteTextView.getText()) ||
+                TextUtils.isEmpty(binding.monthAutoCompleteTextView.getText()) ||
+                TextUtils.isEmpty(binding.dayAutoCompleteTextView.getText())) {
             Toast.makeText(getContext(), "Please select a complete date of birth", Toast.LENGTH_SHORT).show();
             valid = false;
         }
@@ -167,11 +150,11 @@ public class EditProfileFragment extends Fragment {
         currentProfile.setFirstName(binding.firstNameEditText.getText().toString());
         currentProfile.setLastName(binding.lastNameEditText.getText().toString());
         currentProfile.setEmail(binding.emailEditText.getText().toString());
-        currentProfile.setGender(binding.genderSpinner.getSelectedItem().toString());
+        currentProfile.setGender(binding.genderAutoCompleteTextView.getText().toString());
 
-        String dateOfBirth = binding.yearSpinner.getSelectedItem().toString() + "-" +
-                binding.monthSpinner.getSelectedItem().toString() + "-" +
-                binding.daySpinner.getSelectedItem().toString();
+        String dateOfBirth = binding.yearAutoCompleteTextView.getText() + "-" +
+                binding.monthAutoCompleteTextView.getText() + "-" +
+                binding.dayAutoCompleteTextView.getText();
         currentProfile.setDateOfBirth(dateOfBirth);
 
         currentProfile.setMedicalHistory(binding.medicalHistoryEditText.getText().toString());

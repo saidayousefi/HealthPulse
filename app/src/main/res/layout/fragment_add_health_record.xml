@@ -19,15 +19,16 @@
             android:id="@+id/textViewBloodPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Blood Pressure"
-            android:fontFamily="monospace"
+            android:drawablePadding="8dp"
+            android:fontFamily="casual"
             android:gravity="center"
+            android:text="Blood Pressure"
+            android:textColor="#2D3B87"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:drawableStartCompat="@drawable/bp4"
-            android:drawablePadding="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutSystolic"
@@ -44,7 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Systolic"
-                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:fontFamily="casual"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Diastolic"
-                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:fontFamily="casual"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,16 +74,17 @@
             android:id="@+id/textViewBloodSugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Blood Sugar"
-            android:fontFamily="monospace"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="casual"
             android:gravity="center"
+            android:text="Blood Sugar"
+            android:textColor="#2D3B87"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputLayoutSystolic"
             app:drawableStartCompat="@drawable/bs2"
-            android:drawablePadding="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutSystolic" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutBloodSugar"
@@ -97,7 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Blood Sugar"
-                android:fontFamily="monospace"
+                android:textStyle="bold"
+                android:fontFamily="casual"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,11 +111,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Date and Time"
-            android:fontFamily="monospace"
+            android:fontFamily="casual"
             android:gravity="center"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
+            android:textColor="#2D3B87"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutBloodSugar"
             app:drawableStartCompat="@drawable/cal2"
@@ -131,7 +137,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Date"
-                android:fontFamily="monospace"
+                android:fontFamily="casual"
+                android:textStyle="bold"
                 android:inputType="date"
                 android:focusable="false" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -151,7 +158,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Time"
-                android:fontFamily="monospace"
+                android:fontFamily="casual"
+                android:textStyle="bold"
                 android:inputType="time"
                 android:focusable="false" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -161,15 +169,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="32dp"
             android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:padding="10dp"
             android:text="@string/save"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:padding="10dp"
-            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:cornerRadius="12dp"
-            android:fontFamily="monospace"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTime" />

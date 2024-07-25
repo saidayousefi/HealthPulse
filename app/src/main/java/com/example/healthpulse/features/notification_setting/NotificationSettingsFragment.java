@@ -47,21 +47,6 @@ public class NotificationSettingsFragment extends Fragment {
             Navigation.findNavController(v).navigate(R.id.action_notificationSettingsFragment_to_viewNotificationsFragment);
         });
 
-        binding.buttonSave.setOnClickListener(v -> {
-            boolean notificationsEnabled = binding.switchEnableNotifications.isChecked();
-
-            if (notificationsEnabled) {
-                try {
-                    scheduleNotification(hour, minute);
-                } catch (SecurityException e) {
-                    Log.e("NotificationSettings", "Cannot schedule exact alarms", e);
-                    Toast.makeText(getContext(), "Cannot schedule exact alarms. Please check permissions.", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                cancelNotification();
-            }
-            saveNotification();
-        });
 
         binding.editTextTime.setOnClickListener(v -> showTimePickerDialog());
     }
