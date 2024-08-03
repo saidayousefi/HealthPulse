@@ -19,6 +19,8 @@
     <color name="grey">#452196F3</color>
     <color name="primary_text">#DE000000</color> <!-- 87% black -->
     <color name="high_contrast_text">#FFFFFF</color>
+    <color name="text_color_high_contrast">#757575</color>
+    <color name="lightgrey">#ADD8E6</color>
 
     <!-- Custom colors for the chart -->
     <color name="systolic_color">#C8FF5722</color> <!-- Red color for systolic -->

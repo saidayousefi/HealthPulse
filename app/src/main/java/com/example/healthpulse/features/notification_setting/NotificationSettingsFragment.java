@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.example.healthpulse.databinding.FragmentNotificationSettingsBinding;
 import com.example.healthpulse.ui.viewmodel.NotificationViewModel;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class NotificationSettingsFragment extends Fragment {
 
@@ -44,9 +46,9 @@ public class NotificationSettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonViewNotifications.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_notificationSettingsFragment_to_viewNotificationsFragment);
-        });
+        binding.buttonViewNotifications.setOnClickListener(v ->
+                Navigation.findNavController(v).navigate(R.id.action_notificationSettingsFragment_to_viewNotificationsFragment)
+        );
 
         binding.editTextTime.setOnClickListener(v -> showTimePickerDialog());
 
@@ -58,19 +60,24 @@ public class NotificationSettingsFragment extends Fragment {
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         minute = calendar.get(Calendar.MINUTE);
 
+        // Create a ContextThemeWrapper with your custom theme
+        Context themedContext = new ContextThemeWrapper(getContext(), R.style.CustomTimePicker);
+
         TimePickerDialog timePickerDialog = new TimePickerDialog(
-                getContext(),
+                themedContext,  // Use the themed context here
                 (view, hourOfDay, selectedMinute) -> {
                     hour = hourOfDay;
                     minute = selectedMinute;
-                    binding.editTextTime.setText(String.format("%02d:%02d", hour, minute));
+                    binding.editTextTime.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
                 },
                 hour,
                 minute,
-                true
+                true  // 24-hour format
         );
+
         timePickerDialog.show();
     }
+
 
     @SuppressLint("ScheduleExactAlarm")
     private void scheduleNotification(int hour, int minute) {
@@ -81,16 +88,14 @@ public class NotificationSettingsFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.SECOND, 0);
 
         if (alarmManager != null) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         }
     }
 
-
     private void saveNotification() {
-        String notificationMessage = binding.editTextNotificationMessage.getText().toString();
+        String notificationMessage = binding.editTextNotificationMessage.getText() != null ? binding.editTextNotificationMessage.getText().toString() : "";
         if (notificationMessage.isEmpty()) {
             Toast.makeText(getContext(), "Please enter a notification message.", Toast.LENGTH_SHORT).show();
             return;
@@ -99,7 +104,6 @@ public class NotificationSettingsFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.SECOND, 0);
         Date notificationTime = calendar.getTime();
 
         NotificationData notification = new NotificationData();

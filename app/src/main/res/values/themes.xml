@@ -7,6 +7,7 @@
         <item name="colorAccent">@color/colorSecondary</item>
         <item name="android:buttonStyle">@style/Widget.MaterialComponents.Button</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="alertDialogTheme">@style/CustomAlertDialog</item>
     </style>
 
     <!-- Button style -->
@@ -15,10 +16,34 @@
         <item name="cornerRadius">12dp</item>
     </style>
 
-    <!-- TextInputLayout style -->
-    <style name="Widget.MaterialComponents.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <item name="boxBackgroundColor">@android:color/white</item>
-        <item name="boxStrokeColor">@color/colorPrimary</item>
-        <item name="hintTextColor">@color/colorPrimary</item>
+
+
+
+    <style name="CustomAlertDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
     </style>
+
+    <style name="CustomDatePicker" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorPrimary">#8A000000</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+    </style>
+
+    <style name="CustomTimePicker" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorPrimary">#8A000000</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="colorPrimary">#8A000000</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="colorPrimary">#8A000000</item>
+    </style>
+
 </resources>

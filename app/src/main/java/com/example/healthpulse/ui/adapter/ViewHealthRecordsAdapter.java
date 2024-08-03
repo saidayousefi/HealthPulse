@@ -25,7 +25,7 @@ public class ViewHealthRecordsAdapter extends ListAdapter<RecordData, ViewHealth
         this.listener = listener;
     }
 
-    private static final DiffUtil.ItemCallback<RecordData> DIFF_CALLBACK = new DiffUtil.ItemCallback<RecordData>() {
+    private static final DiffUtil.ItemCallback<RecordData> DIFF_CALLBACK = new DiffUtil.ItemCallback<>() {
         @Override
         public boolean areItemsTheSame(@NonNull RecordData oldItem, @NonNull RecordData newItem) {
             return oldItem.getId() == newItem.getId();
@@ -71,9 +71,10 @@ public class ViewHealthRecordsAdapter extends ListAdapter<RecordData, ViewHealth
         public void bind(final RecordData recordData, final OnItemClickListener listener) {
             textViewDate.setText(recordData.getDate());
             textViewTime.setText(recordData.getTime());
-            textViewSystolic.setText(String.valueOf(recordData.getSystolic()));
-            textViewDiastolic.setText(String.valueOf(recordData.getDiastolic()));
-            textViewBloodSugar.setText(String.valueOf(recordData.getBloodSugar()));
+            textViewSystolic.setText(itemView.getContext().getString(R.string.systolic_label, recordData.getSystolic()));
+            textViewDiastolic.setText(itemView.getContext().getString(R.string.diastolic_label, recordData.getDiastolic()));
+            textViewBloodSugar.setText(itemView.getContext().getString(R.string.bs_label, recordData.getBloodSugar()));
+
 
             buttonEdit.setOnClickListener(v -> listener.onItemClick(recordData));
         }

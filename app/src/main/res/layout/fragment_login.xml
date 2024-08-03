@@ -92,7 +92,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="12dp"
-            android:backgroundTint="@color/grey"
+            android:backgroundTint="#7CE91E63"
             android:textColor="@android:color/white"
             app:cornerRadius="12dp" />
 

@@ -14,45 +14,48 @@
             android:id="@+id/titleBloodPressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="casual"
             android:text="Blood Pressure Chart"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:fontFamily="casual"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChartBloodPressure"
             android:layout_width="0dp"
             android:layout_height="300dp"
-            app:layout_constraintTop_toBottomOf="@id/titleBloodPressure"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="1dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleBloodPressure" />
 
         <TextView
             android:id="@+id/titleBloodSugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Blood Sugar Chart"
-            android:textSize="20sp"
+            android:layout_marginTop="6dp"
             android:fontFamily="casual"
+            android:text="Blood Sugar Chart"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/barChartBloodPressure"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="24dp"/>
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barChartBloodPressure" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChartBloodSugar"
-            android:layout_width="0dp"
-            android:layout_height="300dp"
-            app:layout_constraintTop_toBottomOf="@id/titleBloodSugar"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="371dp"
+            android:layout_height="327dp"
+            android:layout_marginTop="1dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleBloodSugar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

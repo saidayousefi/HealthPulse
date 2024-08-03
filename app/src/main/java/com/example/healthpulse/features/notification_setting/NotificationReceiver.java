@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+
 import androidx.core.app.NotificationCompat;
 import com.example.healthpulse.MainActivity;
 import com.example.healthpulse.R;
@@ -13,7 +15,8 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "healthtracker_channel")
+        Log.d("NotificationReceiver", "onReceive called");
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "HealthPulse_channel")
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle("Health Data Reminder")
                 .setContentText("Don't forget to log your health data!")

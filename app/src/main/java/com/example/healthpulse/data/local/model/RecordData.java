@@ -8,7 +8,7 @@ public class RecordData {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private int profileId;
+    private final int profileId;
     private int systolic;
     private int diastolic;
     private int bloodSugar;
@@ -40,9 +40,7 @@ public class RecordData {
         return profileId;
     }
 
-    public void setProfileId(int profileId) {
-        this.profileId = profileId;
-    }
+
 
     public int getSystolic() {
         return systolic;

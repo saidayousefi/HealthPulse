@@ -39,7 +39,7 @@
                     android:textStyle="bold"
                     android:fontFamily="casual"
                     android:inputType="textPersonName"
-                    android:textColor="@color/primary_text" />
+                    android:textColor="@android:color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +61,7 @@
                     android:textStyle="bold"
                     android:fontFamily="casual"
                     android:inputType="textPersonName"
-                    android:textColor="@color/primary_text" />
+                    android:textColor="@android:color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +83,7 @@
                     android:textStyle="bold"
                     android:fontFamily="casual"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/primary_text" />
+                    android:textColor="@android:color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Define your preferences here -->
+    <EditTextPreference
+        android:key="example_text"
+        android:title="Example Text"
+        android:summary="This is an example of a text preference"
+        android:defaultValue=""
+        android:inputType="text" />
+</PreferenceScreen>

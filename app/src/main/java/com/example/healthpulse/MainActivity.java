@@ -3,6 +3,7 @@ package com.example.healthpulse;
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             new ActivityResultContracts.RequestPermission(),
             isGranted -> {
                 if (isGranted) {
-                    createNotificationChannel();
+                    createNotificationChannel(this);
                 }
             }
     );
@@ -76,12 +77,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-                createNotificationChannel();
+                createNotificationChannel(this);
             } else {
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
             }
         } else {
-            createNotificationChannel();
+            createNotificationChannel(this);
         }
 
         OneTimeWorkRequest dataSyncRequest = new OneTimeWorkRequest.Builder(DataSyncWorker.class).build();
@@ -108,15 +109,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 || super.onOptionsItemSelected(item);
     }
 
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "HealthTrackerChannel";
-            String description = "Channel for health data reminders";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel("HealthTracker_channel", name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+    private void createNotificationChannel(Context context) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("HealthPulse_channel",
+                    "Health Pulse Notifications",
+                    NotificationManager.IMPORTANCE_HIGH);
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
     }
@@ -140,7 +138,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_chart) {
             navController.navigate(R.id.chartFragment);
         }
-
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

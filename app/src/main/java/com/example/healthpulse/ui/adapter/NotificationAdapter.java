@@ -67,7 +67,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         }
 
         void bind(final NotificationData notification, final OnItemClickListener listener) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.getDefault());
             textViewNotificationTime.setText(sdf.format(notification.getNotificationTime()));
             textViewNotificationMessage.setText(notification.getNotificationMessage());
             itemView.setOnClickListener(v -> listener.onItemClick(notification));

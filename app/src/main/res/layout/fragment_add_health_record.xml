@@ -22,7 +22,7 @@
             android:drawablePadding="8dp"
             android:fontFamily="casual"
             android:gravity="center"
-            android:text="Blood Pressure"
+            android:text="@string/blood_pressure"
             android:textColor="#2D3B87"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -44,10 +44,11 @@
                 android:id="@+id/editTextSystolic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Systolic"
+                android:hint="@string/systolic_input"
                 android:textStyle="bold"
                 android:fontFamily="casual"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="#000000"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -64,10 +65,11 @@
                 android:id="@+id/editTextDiastolic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Diastolic"
+                android:hint="@string/diastolic_input"
                 android:textStyle="bold"
                 android:fontFamily="casual"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@android:color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -78,7 +80,7 @@
             android:drawablePadding="8dp"
             android:fontFamily="casual"
             android:gravity="center"
-            android:text="Blood Sugar"
+            android:text="@string/blood_sugar"
             android:textColor="#2D3B87"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -100,17 +102,18 @@
                 android:id="@+id/editTextBloodSugar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Blood Sugar"
+                android:hint="@string/blood_sugar_input"
                 android:textStyle="bold"
                 android:fontFamily="casual"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@android:color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textViewDateTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Date and Time"
+            android:text="@string/date_time"
             android:fontFamily="casual"
             android:gravity="center"
             android:textSize="20sp"
@@ -136,11 +139,12 @@
                 android:id="@+id/editTextDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Date"
+                android:hint="@string/date"
                 android:fontFamily="casual"
                 android:textStyle="bold"
                 android:inputType="date"
-                android:focusable="false" />
+                android:focusable="false"
+                android:textColor="@android:color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -157,11 +161,12 @@
                 android:id="@+id/editTextTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Time"
+                android:hint="@string/time"
                 android:fontFamily="casual"
                 android:textStyle="bold"
                 android:inputType="time"
-                android:focusable="false" />
+                android:focusable="false"
+                android:textColor="@android:color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -180,7 +185,8 @@
             app:cornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTime" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTime"
+            android:contentDescription="@string/save_button"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

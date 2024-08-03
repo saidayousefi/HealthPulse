@@ -2,8 +2,10 @@ package com.example.healthpulse.features.add_health_record;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.healthpulse.R;
 import com.example.healthpulse.databinding.FragmentAddHealthRecordBinding;
 import com.example.healthpulse.data.local.model.RecordData;
 import com.example.healthpulse.ui.viewmodel.HealthRecordsViewModel;
@@ -26,7 +29,7 @@ import java.util.Locale;
 public class AddHealthRecordFragment extends Fragment {
     private FragmentAddHealthRecordBinding binding;
     private HealthRecordsViewModel recordViewModel;
-    private Calendar selectedDateTime = Calendar.getInstance();
+    private final Calendar selectedDateTime = Calendar.getInstance();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,32 +49,54 @@ public class AddHealthRecordFragment extends Fragment {
     }
 
     private void showDatePicker() {
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), (view, year, month, dayOfMonth) -> {
-            selectedDateTime.set(Calendar.YEAR, year);
-            selectedDateTime.set(Calendar.MONTH, month);
-            selectedDateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            binding.editTextDate.setText(dateFormat.format(selectedDateTime.getTime()));
-        }, selectedDateTime.get(Calendar.YEAR), selectedDateTime.get(Calendar.MONTH), selectedDateTime.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
+        if (getContext() != null) {
+            // Create a ContextThemeWrapper with your custom theme
+            Context themedContext = new ContextThemeWrapper(getContext(), R.style.CustomDatePicker);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    themedContext,
+                    (view, year, month, dayOfMonth) -> {
+                        selectedDateTime.set(Calendar.YEAR, year);
+                        selectedDateTime.set(Calendar.MONTH, month);
+                        selectedDateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+                        binding.editTextDate.setText(dateFormat.format(selectedDateTime.getTime()));
+                    },
+                    selectedDateTime.get(Calendar.YEAR),
+                    selectedDateTime.get(Calendar.MONTH),
+                    selectedDateTime.get(Calendar.DAY_OF_MONTH)
+            );
+            datePickerDialog.show();
+        }
     }
 
     private void showTimePicker() {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hourOfDay, minute) -> {
-            selectedDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
-            selectedDateTime.set(Calendar.MINUTE, minute);
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
-            binding.editTextTime.setText(timeFormat.format(selectedDateTime.getTime()));
-        }, selectedDateTime.get(Calendar.HOUR_OF_DAY), selectedDateTime.get(Calendar.MINUTE), true);
-        timePickerDialog.show();
+        if (getContext() != null) {
+            // Create a ContextThemeWrapper with your custom theme
+            Context themedContext = new ContextThemeWrapper(getContext(), R.style.CustomTimePicker);
+
+            TimePickerDialog timePickerDialog = new TimePickerDialog(
+                    themedContext,
+                    (view, hourOfDay, minute) -> {
+                        selectedDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        selectedDateTime.set(Calendar.MINUTE, minute);
+                        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                        binding.editTextTime.setText(timeFormat.format(selectedDateTime.getTime()));
+                    },
+                    selectedDateTime.get(Calendar.HOUR_OF_DAY),
+                    selectedDateTime.get(Calendar.MINUTE),
+                    true
+            );
+            timePickerDialog.show();
+        }
     }
 
     private void saveRecord() {
-        String systolicStr = binding.editTextSystolic.getText().toString();
-        String diastolicStr = binding.editTextDiastolic.getText().toString();
-        String bloodSugarStr = binding.editTextBloodSugar.getText().toString();
-        String dateStr = binding.editTextDate.getText().toString();
-        String timeStr = binding.editTextTime.getText().toString();
+        String systolicStr = binding.editTextSystolic.getText() != null ? binding.editTextSystolic.getText().toString() : "";
+        String diastolicStr = binding.editTextDiastolic.getText() != null ? binding.editTextDiastolic.getText().toString() : "";
+        String bloodSugarStr = binding.editTextBloodSugar.getText() != null ? binding.editTextBloodSugar.getText().toString() : "";
+        String dateStr = binding.editTextDate.getText() != null ? binding.editTextDate.getText().toString() : "";
+        String timeStr = binding.editTextTime.getText() != null ? binding.editTextTime.getText().toString() : "";
 
         if (isValid(systolicStr, diastolicStr, bloodSugarStr, dateStr, timeStr)) {
             int systolic = Integer.parseInt(systolicStr);

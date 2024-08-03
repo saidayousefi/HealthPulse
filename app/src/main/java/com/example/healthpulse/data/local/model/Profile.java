@@ -13,7 +13,7 @@ public class Profile implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
+    private final String password;
     private String gender;
     private String dateOfBirth;
     private String medicalHistory;
@@ -66,9 +66,7 @@ public class Profile implements Serializable {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+
 
     public String getGender() {
         return gender;

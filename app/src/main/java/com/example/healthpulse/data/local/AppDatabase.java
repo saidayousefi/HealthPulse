@@ -12,8 +12,7 @@ import com.example.healthpulse.data.local.dao.ProfileDao;
 import com.example.healthpulse.data.local.model.NotificationData;
 import com.example.healthpulse.data.local.model.RecordData;
 import com.example.healthpulse.data.local.model.Profile;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 @Database(entities = {RecordData.class, Profile.class, NotificationData.class}, version = 1, exportSchema = false)
 @TypeConverters({Converters.class})
@@ -24,9 +23,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract NotificationDao notificationDao();
 
     private static volatile AppDatabase INSTANCE;
-    private static final int NUMBER_OF_THREADS = 4;
-    public static final ExecutorService databaseWriteExecutor =
-            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
+
 
     public static AppDatabase getInstance(final Context context) {
         if (INSTANCE == null) {
